@@ -1,4 +1,25 @@
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 30px;
+`;
+
+const StatisticsItem = styled.p`
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+
+  :last-child {
+    margin-bottom: 0px;
+  }
+`;
 
 const FeedbackStatistics = ({
   good,
@@ -9,13 +30,13 @@ const FeedbackStatistics = ({
 }) => {
   return (
     <div>
-      <div>
-        <p>Good: {good}</p>
-        <p>Neutral: {neutral}</p>
-        <p>Bad: {bad}</p>
-      </div>
-      <p>Total: {total}</p>
-      <p>Positive feedback: {positivePercentage} %</p>
+      <Wrapper>
+        <StatisticsItem>Good: {good}</StatisticsItem>
+        <StatisticsItem>Neutral: {neutral}</StatisticsItem>
+        <StatisticsItem>Bad: {bad}</StatisticsItem>
+      </Wrapper>
+      <StatisticsItem>Total: {total}</StatisticsItem>
+      <StatisticsItem>Positive feedback: {positivePercentage} %</StatisticsItem>
     </div>
   );
 };

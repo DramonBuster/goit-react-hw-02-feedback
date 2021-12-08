@@ -3,7 +3,24 @@ import './App.css';
 import Section from './Components/Section/Section';
 import FeedbackButtons from './Components/FeedbackButtons/FeedbackButtons';
 import FeedbackStatistics from './Components/FeedbackStatistics/FeedbackStatistics';
-import Notification from './Components/Notification/Notification';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 300px;
+`;
+
+const Notification = styled.p`
+  margin-bottom: 40px;
+  text-align: center;
+  padding: 5px;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  background-color: red;
+`;
 
 class App extends Component {
   state = {
@@ -37,7 +54,7 @@ class App extends Component {
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     return (
-      <div>
+      <Container>
         <Section title="Please leave feedback">
           <FeedbackButtons
             feedbacks={Object.keys(this.state)}
@@ -55,10 +72,10 @@ class App extends Component {
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
           ) : (
-            <Notification notificationMessage="No feedback given" />
+            <Notification>No feedback given!</Notification>
           )}
         </Section>
-      </div>
+      </Container>
     );
   }
 }
